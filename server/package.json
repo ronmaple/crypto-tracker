@@ -4,8 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "env NODE_ENV=test mocha echo \"Error: no test specified\" && exit 1",
+    "test_coin": "mocha 'test/api/getData.spec.js'",
+    "dev": "nodemon index"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chai-date-string": "^0.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.23",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4"
+  }
 }
