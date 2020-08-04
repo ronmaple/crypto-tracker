@@ -1,10 +1,14 @@
 
 const helmet = require('helmet');
 const cors = require('cors');
+const redisClient = require('./redis');
+const logger = require('./logger');
 
 module.exports = (express, app) => {
 
     console.log('Loading app...');
+
+    const client = redisClient();
 
     const router = express.Router();
 
@@ -16,21 +20,12 @@ module.exports = (express, app) => {
     ]
 
     if (process.env.NODE_ENV !== "test") {
-        // morgan interferes with tests
-
-        const morgan = require('morgan');
-
-        morgan.token("body", function (req, res) {
-            return JSON.stringify(req.body);
-        });
-
-        const morganSettings =
-            ":method :url :status :response-time ms - :res[content-length] :body - :req[content-length]";
-
-        app.use(morgan(morganSettings));
+        // logger imports 'morgan' logging library -- morgan intereferes with testing
+        logger(app);
     }
 
     app.use(middlewares);
 
+    app.use('/api', require('../api/routes/api')(router, client))
 
 }
