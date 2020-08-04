@@ -1,5 +1,5 @@
-const _ = require('lodash');
 const { coinApiKey } = require('../../configs/keys');
+const _ = require('lodash');
 const moment = require('moment');
 
 const requestHeaders = {
@@ -16,9 +16,15 @@ const arrayUnion = (arr1, arr2, identifier) => {
         @param {Array.<Object>} arr2
         @param {string} - Specific Object key present in both array join at
     */
-    const array = [...arr1, ...arr2];
 
-    return _.uniqBy(array, identifier)
+    console.log('arrayUnion, arr1, arr2, identifier, arr1, arr2, identifier');
+    // const array = [...arr1, ...arr2];
+    // return _.uniqBy(array, identifier)
+
+    const merged = _.merge(_.keyBy(arr1, identifier), _.keyBy(arr2, identifier));
+    const values = _.values(merged);
+
+    return values;
 }
 
 const timeToMidnight = () => {

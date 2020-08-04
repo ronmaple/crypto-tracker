@@ -65,11 +65,11 @@ module.exports = (router, client) => {
 
         } catch (e) {
             console.error(e);
-            res.status(500).send({ error: 'Server error' })
+            res.status(500).send('Server Error')
         }
     })
 
-    router.get('/all', cacheAll, async (req, res, next) => {
+    router.get('/all', cacheAll, async (req, res) => {
         const currencies = await getListData();
 
         console.log('currencies', currencies);
@@ -83,9 +83,9 @@ module.exports = (router, client) => {
             currency.price_cad = currency.price_usd / cad_usd;
         })
 
-        const realCurrencies = ['CAD', 'USD']
+        const realCurrencies = ['CAD', 'USD'];
 
-        const response = currencies.filter(({ asset_id }) => !realCurrencies.includes(asset_id))
+        const response = currencies.filter(({ asset_id }) => !realCurrencies.includes(asset_id));
 
         const key = moment().format('YYYYMMDD');
 
@@ -96,12 +96,21 @@ module.exports = (router, client) => {
         res.json(response);
     })
 
-    router.post('/add', async (req, res, next) => {
-        // ADD new Crypto to the list
+    router.post('/delete-cache', async (req, res) => {
+        // clear the current cache. Useful for development.
+        try {
+            const key = moment().format('YYYYMMDD');
+            client.del(key);
+
+            return res.send('Cache deleted!');
+        } catch (e) {
+            return res.status(500).send('Server Error');
+        }
     })
 
+    router.post('/add', async (req, res) => {
+        // TODO ADD new Crypto to the list. Possible file created?
+    })
 
     return router;
-
-
 }

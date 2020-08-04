@@ -21,8 +21,6 @@ async function getListData() {
         })
     })
 
-
-
     const filteredByKeys = filteredByCurrency.map(currency => {
         const allowedKeys = ['asset_id', 'name', 'price_usd']
         return Object.keys(currency)
@@ -39,8 +37,15 @@ async function getListData() {
 
     const dataWithImages = arrayUnion(filteredByKeys, images, KEY);
 
+    console.log('images', images);
+
+    console.log('dataWithImages', dataWithImages);
+
     return dataWithImages;
 
 }
+
+getListData();
+
 
 module.exports = getListData;
