@@ -50,10 +50,10 @@ module.exports = (router, client) => {
 
             let { body: { base, currency } } = req;
 
-            base = base.toUpperCase();
-            currency = currency.toUpperCase();
-
-            const key = JSON.stringify({ base, currency })
+            const key = JSON.stringify({
+                base: base.toUpperCase(),
+                currency: currency.toUpperCase()
+            })
 
             const data = await getSpecificData(base, currency);
 

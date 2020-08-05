@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useReducer, useState } from 'react';
+import AppContext from './context/AppContext';
+import Main from './components/Main'
+import { initialState } from './store/initialState';
+import useFetchData from './hooks/useFetchData';
+
 import './App.css';
 
+import { Reset } from 'styled-reset';
+
 function App() {
+
+  const [state, setState] = useState(initialState);
+
+  const setContext = (data) => {
+    setState(data);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{ state, setAppContext: setContext }}>
+      <Reset />
+      <Main />
+    </AppContext.Provider >
   );
 }
 
