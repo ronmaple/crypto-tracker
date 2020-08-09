@@ -1,6 +1,10 @@
 # Crypto Tracker
 
-### Stack:
+Complete rebuild of application I created 2 years ago (previous stack: React, Node, Express, Mongo):
+
+-   [Link to previous](https://github.com/ronmaple/crypto-viewer)
+
+### Current Stack:
 
 Front-end:
 
