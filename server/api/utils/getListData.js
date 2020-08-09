@@ -8,44 +8,33 @@ const _ = require('lodash');
 const defaults = require('../settings/defaultList.json');
 
 async function getListData() {
+	const KEY = 'asset_id';
 
-    const KEY = 'asset_id';
+	console.log('getListData()...');
 
-    console.log('getListData()...')
+	const { data } = await axios.get(`${baseUrl}/v1/assets`, requestHeaders);
 
-    const { data } = await axios.get(`${baseUrl}/v1/assets`, requestHeaders);
+	const filteredByCurrency = data.filter((item) => {
+		return defaults.some(({ name }) => {
+			return name === item.asset_id;
+		});
+	});
 
-    const filteredByCurrency = data.filter(item => {
-        return defaults.some(({ name }) => {
-            return name === item.asset_id;
-        })
-    })
+	const filteredByKeys = filteredByCurrency.map((currency) => {
+		const allowedKeys = ['asset_id', 'name', 'price_usd'];
+		return Object.keys(currency)
+			.filter((key) => allowedKeys.includes(key))
+			.reduce((obj, key) => {
+				obj[key] = currency[key];
+				return obj;
+			}, {});
+	});
 
-    const filteredByKeys = filteredByCurrency.map(currency => {
-        const allowedKeys = ['asset_id', 'name', 'price_usd']
-        return Object.keys(currency)
-            .filter(key => allowedKeys.includes(key))
-            .reduce((obj, key) => {
-                obj[key] = currency[key];
-                return obj;
-            }, {})
-    })
+	const images = await getImages();
 
-    console.log('fitleredByKeys', filteredByKeys);
+	const dataWithImages = arrayUnion(filteredByKeys, images, KEY);
 
-    const images = await getImages();
-
-    const dataWithImages = arrayUnion(filteredByKeys, images, KEY);
-
-    console.log('images', images);
-
-    console.log('dataWithImages', dataWithImages);
-
-    return dataWithImages;
-
+	return dataWithImages;
 }
-
-getListData();
-
 
 module.exports = getListData;

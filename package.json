@@ -1,7 +1,11 @@
 {
-  "name": "crypto-remake",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "<ronmapue@gmail.com>",
-  "license": "MIT"
+	"name": "crypto-remake",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "<ronmapue@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+    "start": "cd server && yarn run start",
+		"heroku-postbuild": "cd cd client && yarn install && yarn run build"
+	}
 }
