@@ -1,5 +1,5 @@
-
 export const initialState = {
-    data: [],
-    loading: true,
-}
+	data: [],
+	isUSD: true,
+	loading: true,
+};

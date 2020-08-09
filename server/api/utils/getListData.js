@@ -5,7 +5,7 @@ const getImages = require('./getImageData');
 const _ = require('lodash');
 
 // contains cryptocurrencies to be tracked. Also includes CAD and USD, for CAD-USD conversion
-const defaults = require('../data/defaultList.json');
+const defaults = require('../settings/defaultList.json');
 
 async function getListData() {
 

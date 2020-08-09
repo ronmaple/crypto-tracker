@@ -1,7 +1,7 @@
 const axios = require('axios');
 const moment = require('moment');
 const { baseUrl, requestHeaders } = require('../utils/helpers');
-const defaults = require('../data/defaultList.json');
+const defaults = require('../settings/defaultList.json');
 
 async function getImagedata() {
 
