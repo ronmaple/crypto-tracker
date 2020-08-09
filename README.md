@@ -1,4 +1,4 @@
-#Crypto Tracker
+# Crypto Tracker
 
 ### Stack:
 
