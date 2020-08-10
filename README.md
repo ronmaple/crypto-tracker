@@ -2,7 +2,11 @@
 
 Complete rebuild of application I created 2 years ago (previous stack: React, Node, Express, Mongo):
 
--   [Link to previous](https://github.com/ronmaple/crypto-viewer)
+-   [Link to previous repo](https://github.com/ronmaple/crypto-viewer)
+
+Live application:
+
+-   [Link to live application on Heroku][https://crypto-track-rm.herokuapp.com/]
 
 ### Current Stack:
 
@@ -15,6 +19,6 @@ Back-end:
 
 -   Node
 -   Express
--   Redis (caching)
+-   Redis (caching) - Heroku Redis instance addon
 
 ![Screenshot](/screenshots/main.png)

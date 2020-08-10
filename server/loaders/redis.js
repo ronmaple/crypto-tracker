@@ -3,9 +3,10 @@ const redis = require('redis');
 module.exports = () => {
 	try {
 		console.log('Loading Redis...');
-		const REDIS_PORT = process.env.REDIS_URL || 6379;
 
-		console.log('REDIS_PORT .env', process.env.REDIS_PORT);
+		const DEFAULT_LOCAL_PORT = 6379;
+
+		const REDIS_PORT = process.env.REDIS_URL || DEFAULT_LOCAL_PORT;
 
 		const redisClient = redis.createClient(REDIS_PORT);
 

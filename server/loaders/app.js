@@ -26,9 +26,6 @@ module.exports = (express, app) => {
 		const reactBuildPath = path.join(__dirname, '../../', 'client', 'build', 'index.html');
 		const staticBuildPath = path.join(__dirname, '../../', 'client', 'build');
 
-		console.log('reactBuildPath', reactBuildPath);
-		console.log('staticBuildPath(not used)', staticBuildPath);
-
 		app.use(express.static(staticBuildPath));
 		app.use(express.static('public'));
 
