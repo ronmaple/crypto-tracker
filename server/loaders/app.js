@@ -23,9 +23,9 @@ module.exports = (express, app) => {
 	app.use('/api', require('../api/routes/api')(router, client));
 
 	if (process.env.NODE_ENV === 'production') {
-		app.use(express.static('client/build'));
-
 		const reactBuildPath = path.join(__dirname, 'client', 'build', 'index.html');
+
+		app.use(express.static(reactBuildPath));
 
 		app.get('/', () => () => {
 			res.sendFile(reactBuildPath);
