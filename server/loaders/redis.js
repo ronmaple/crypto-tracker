@@ -3,7 +3,7 @@ const redis = require('redis');
 module.exports = () => {
 	try {
 		console.log('Loading Redis...');
-		const REDIS_PORT = process.env.REDIS_PORT || 6379;
+		const REDIS_PORT = process.env.REDIS_URL || 6379;
 
 		console.log('REDIS_PORT .env', process.env.REDIS_PORT);
 
