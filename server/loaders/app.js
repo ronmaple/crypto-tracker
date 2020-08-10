@@ -27,7 +27,7 @@ module.exports = (express, app) => {
 
 		console.log('reactBuildPath', reactBuildPath);
 
-		app.use(express.static(reactBuildPath));
+		app.use(express.static(__dirname, '../../', 'client', 'build'));
 
 		app.get('/', (req, res) => {
 			res.sendFile(reactBuildPath);
