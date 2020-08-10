@@ -24,8 +24,11 @@ module.exports = (express, app) => {
 
 	if (process.env.NODE_ENV === 'production') {
 		app.use(express.static('client/build'));
-		app.get('*', () => () => {
-			res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+
+		const reactBuildPath = path.join(__dirname, 'client', 'build', 'index.html');
+
+		app.get('/', () => () => {
+			res.sendFile(reactBuildPath);
 		});
 	}
 

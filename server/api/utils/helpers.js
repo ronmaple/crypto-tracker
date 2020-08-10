@@ -1,10 +1,10 @@
-const { coinApiKey } = require('../../configs/keys');
+const { coinAPI } = require('../../configs/keys');
 const _ = require('lodash');
 const moment = require('moment');
 
 const requestHeaders = {
 	headers: {
-		'X-CoinAPI-Key': coinApiKey,
+		'X-CoinAPI-Key': coinAPI,
 	},
 };
 

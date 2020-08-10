@@ -1,41 +1,37 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
-
 import fetchData from '../actions/fetchData';
-import { initialState } from '../store/initialState';
 
 import styled from 'styled-components';
 import Card from './Card';
 import ToggleSwitch from './ToggleSwitch';
+import Spinner from '../components/Spinner';
 
-export default function Main(props) {
-	// const [state, setState] = useState(initialState)
+export default function Main() {
 	const { state, setAppContext } = useContext(AppContext);
-
-	console.log('state', state);
 
 	useEffect(() => {
 		fetchData().then(({ data: res }) => {
-			console.log('res');
 			setAppContext({
 				loading: false,
 				data: res,
 			});
 		});
-		return () => {
-			console.log('props', props);
-		};
 	}, []);
 
 	return (
 		<Container>
+			<Title>
+				<h1>Top Crypto Prices</h1>
+			</Title>
 			{state.isLoading ? (
-				<div>loading</div>
+				<>
+					<LoadingWrapper>
+						<Spinner />
+					</LoadingWrapper>
+				</>
 			) : (
 				<>
-					<Title>
-						<h1>Top Crypto Prices</h1>
-					</Title>
 					<SwitchContainer>
 						<CurrencyTag>USD</CurrencyTag>
 						<ToggleSwitch />
@@ -92,4 +88,11 @@ const CurrencyTag = styled.h3`
 	font-size: ${(props) => props.theme.fontSizes.medium};
 	font-family: ${(props) => props.theme.fonts[0]};
 	padding: 0.75em;
+`;
+
+const LoadingWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-area: 2 / 1 / -1 / -1;
 `;

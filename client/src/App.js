@@ -1,14 +1,11 @@
 import React, { useReducer, useState } from 'react';
 import AppContext from './context/AppContext';
-
 import { initialState } from './store/initialState';
 
 import Main from './components/Main';
-
 import Theme from './styles/Theme';
 import GlobalStyle from './styles/GlobalStyle';
 import styled from 'styled-components';
-import './App.css';
 
 import { Reset } from 'styled-reset';
 

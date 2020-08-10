@@ -1,7 +1,7 @@
 {
 	"name": "crypto-remake",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "server/index.js",
 	"author": "<ronmapue@gmail.com>",
 	"license": "MIT",
 	"scripts": {

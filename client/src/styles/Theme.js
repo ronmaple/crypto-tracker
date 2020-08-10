@@ -30,6 +30,7 @@ const theme = {
 		lg: 1960,
 	},
 	shadow: '0 0 .25rem 0 #535657',
+	shadowHover: '0 0 0.5rem 0 #535657',
 };
 
 export default Theme;

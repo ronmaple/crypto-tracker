@@ -10,6 +10,7 @@ export default function Card({ data: { asset_id, name, price_cad, url, price_usd
 	};
 
 	let price = state.isUSD ? `$ ${formatPrice(price_cad)} CAD` : `$ ${formatPrice(price_usd)} USD`;
+
 	return (
 		<Wrapper>
 			<Header>
@@ -43,6 +44,7 @@ const Wrapper = styled.div`
 	}
 
 	&:hover {
+		box-shadow: ${(props) => props.theme.shadowHover};
 		transform: scale(1.05);
 		transition: 0.4s;
 	}
