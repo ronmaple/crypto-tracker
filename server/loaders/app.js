@@ -23,13 +23,14 @@ module.exports = (express, app) => {
 	app.use('/api', require('../api/routes/api')(router, client));
 
 	if (process.env.NODE_ENV === 'production') {
-		const reactBuildPath = path.resolve(__dirname, '../../', 'client', 'build', 'index.html');
-		const staticBuildPath = path.resolve(__dirname, '../../', 'client', 'build');
+		const reactBuildPath = path.join(__dirname, '../../', 'client', 'build', 'index.html');
+		const staticBuildPath = path.join(__dirname, '../../', 'client', 'build');
 
 		console.log('reactBuildPath', reactBuildPath);
 		console.log('staticBuildPath(not used)', staticBuildPath);
 
-		app.use(express.static('../../client/build'));
+		app.use(express.static(staticBuildPath));
+		app.use(express.static('public'));
 
 		app.get('/', (req, res) => {
 			res.sendFile(reactBuildPath);
