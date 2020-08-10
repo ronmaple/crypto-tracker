@@ -25,6 +25,8 @@ module.exports = (express, app) => {
 	if (process.env.NODE_ENV === 'production') {
 		const reactBuildPath = path.join(__dirname, '../../', 'client', 'build', 'index.html');
 
+		console.log('reactBuildPath', reactBuildPath);
+
 		app.use(express.static(reactBuildPath));
 
 		app.get('/', (req, res) => {
