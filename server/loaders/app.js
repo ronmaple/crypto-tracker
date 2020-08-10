@@ -23,7 +23,7 @@ module.exports = (express, app) => {
 	app.use('/api', require('../api/routes/api')(router, client));
 
 	if (process.env.NODE_ENV === 'production') {
-		const reactBuildPath = path.join(__dirname, 'client', 'build', 'index.html');
+		const reactBuildPath = path.join(__dirname, '../../', 'client', 'build', 'index.html');
 
 		app.use(express.static(reactBuildPath));
 
