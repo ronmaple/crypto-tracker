@@ -6,7 +6,7 @@ Complete rebuild of application I created 2 years ago (previous stack: React, No
 
 Live application:
 
--   [Link to live application on Heroku][https://crypto-track-rm.herokuapp.com/]
+-   [Link to live application on Heroku](https://crypto-track-rm.herokuapp.com/)
 
 ### Current Stack:
 
